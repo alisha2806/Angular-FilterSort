@@ -1,0 +1,26 @@
+<div class="container" style="width:100%">
+  <div class='searchDiv'>
+    <h6>
+      Name/Country severity: <span><input type="text" [(ngModel)]="filterText" /></span>
+    </h6>
+  </div>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr class="bg-info">
+        <th appDirectiveSort [sortKey]="'name'" scope="col" [list]="listitem">Name<i class="fa fa-fw fa-sort"></i></th>
+        <th appDirectiveSort [sortKey]="'created'" scope="col" [list]="listitem">Created<i class="fa fa-fw fa-sort"></i></th>
+        <th appDirectiveSort [sortKey]="'modified'" scope="col" [list]="listitem">Modified<i class="fa fa-fw fa-sort"></i></th>
+        <th scope="col">Country check severity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let list of listitem | filterPipe: filterText" class="list-items">
+        <td>{{list.name }}</td>
+        <td>{{list.created}}</td>
+        <td>{{list.modified}}</td>
+        <td>{{list.country_check_severity}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
